@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <div id="div1">
+      <h1>User list</h1>
+      <button onclick="fetchUser()">Get User</button>
+      <ul id="userlist"></ul>
+    </div>
+
+    <script type="text/javascript">
+      async function fetchUser() {
+        //const response = await fetch("http://localhost:3000/");
+        const response = await fetch("Access-Control-Allow-Origin");
+        const users = await response.json();
+        console.log(users);
+        //body.appendChild(handle);
+        let handle = document.createElement("div");
+        handle.innerHTML = document.getElementById("userlist");
+
+        document.getElementById("userlist").innerHTML = users.map(
+          (user) => `<li>${user.name}------${user.email}</li>
+			
+			
+			`
+        );
+      }
+    </script>
+  </body>
+</html>
